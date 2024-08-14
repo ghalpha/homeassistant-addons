@@ -1,3 +1,10 @@
 name: "Home Assistant Add-ons Repositiory by Teksyn"
 url: "https://github.com/ghalpha/homeassistant-addons"
 maintainer: "ghalpha"
+
+addons:
+  - name: "Homepage"
+    slug: "homepage"
+    description: "A customizable dashboard for your smart home."
+    url: "https://github.com/ghalpha/homeassistant-addons/tree/main/homepage"
+    version: "0.9.6"
