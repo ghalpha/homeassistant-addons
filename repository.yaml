@@ -5,6 +5,6 @@ maintainer: "ghalpha"
 addons:
   - name: "Homepage"
     slug: "homepage"
-    description: "A modern, fully static, fast, secure fully proxied, highly customizable application dashboard with integrations for over 100 services and translations into multiple languages. Easily configured via YAML files or through docker label discovery."
+    description: "A customizable dashboard for your smart home."
     url: "https://github.com/ghalpha/homeassistant-addons/homepage"
-    version: "1.0.0"
+    version: "0.9.6"

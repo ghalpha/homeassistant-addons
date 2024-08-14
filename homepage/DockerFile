@@ -1,8 +1,10 @@
-ARG BUILD_FROM
-FROM $BUILD_FROM
+FROM ghcr.io/benphelps/homepage:latest
 
-# Copy data for add-on
-COPY run.sh /
-RUN chmod a+x /run.sh
+# Set working directory
+WORKDIR /app
 
-CMD [ "/run.sh" ]
+# Expose the necessary ports
+EXPOSE 3000
+
+# Start the Homepage app
+CMD ["./homepage"]
