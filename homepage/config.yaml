@@ -1,0 +1,15 @@
+name: "Homepage"
+description: "A modern, fully static, fast, secure fully proxied, highly customizable application dashboard with integrations for over 100 services and translations into multiple languages. Easily configured via YAML files or through docker label discovery."
+version: "latest"
+slug: "homepage"
+init: true
+url: "ghcr.io/gethomepage/homepage"
+webui: "http://[HOST]:[PORT:3000]"
+arch:
+  - amd64
+  - armhf
+  - armv7
+image: "gethomepage/homepage"
+port:
+  3000: 3000
+ingress: true
