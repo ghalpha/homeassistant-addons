@@ -13,3 +13,4 @@ ports:
 options: {}
 schema: {}
 image: "lissy93/dashy:latest"
+init: true
