@@ -3,7 +3,7 @@ description: "A modern, fully static, fast, secure fully proxied, highly customi
 version: "latest"
 slug: "homepage"
 init: true
-url: "ghcr.io/gethomepage/homepage"
+url: "https://github.com/ghalpha/homeassistant-addons/"
 webui: "http://[HOST]:[PORT:3000]"
 arch:
   - amd64
