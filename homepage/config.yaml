@@ -2,7 +2,6 @@ name: "Homepage"
 version: "0.9.6"
 slug: "homepage"
 description: "A customizable dashboard for your smart home."
-image: "ghcr.io/gethomepage/homepage:latest"
 arch:
   - amd64
   - armv7
@@ -20,3 +19,4 @@ schema:
 volumes:
   - /config/homepage:/app/config
   - /var/run/docker.sock:/var/run/docker.sock
+image: "ghcr.io/gethomepage/homepage:latest"
