@@ -1,0 +1,19 @@
+name: "Dashboard"
+version: "1.0.0"
+slug: "dashboard"
+description: "A customizable dashboard."
+arch:
+  - amd64
+  - armv7
+  - aarch64
+startup: "services"
+boot: "auto"
+ports:
+  8080/tcp: 8080
+options:
+  data_path: "/data/dashboard"
+schema:
+  data_path: "str"
+volumes:
+  - data_path:/app/data
+image: "phntxx/dashboard:latest"
