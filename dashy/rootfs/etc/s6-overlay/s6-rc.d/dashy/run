@@ -1,0 +1,23 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Benoit Anastay Add-on: Dashy
+# Run Dashy
+# ==============================================================================
+
+USER_DATA_DIR=/../../../config
+IS_DOCKER=true
+
+export USER_DATA_DIR
+export IS_DOCKER
+
+echo -n "${USER_DATA_DIR}" > /var/run/s6/container_environment/USER_DATA_DIR
+echo -n "${IS_DOCKER}" > /var/run/s6/container_environment/IS_DOCKER
+
+if ! bashio::fs.file_exists '/config/conf.yml'; then
+    bashio::log.info "Copy default conf.yml"
+    cp /usr/src/dashy/user-data/conf.yml /config/conf.yml
+fi
+
+cd /usr/src/dashy || exit
+yarn build-and-start
