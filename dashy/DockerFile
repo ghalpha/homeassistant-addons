@@ -11,6 +11,7 @@ ARG BUILD_REF
 ARG BUILD_REPOSITORY
 ARG BUILD_VERSION
 
+# Define volume for persistent storage
 VOLUME ["/app/public/"]
 
 # Environment variables
@@ -28,34 +29,34 @@ COPY rootfs /
 # Set shell
 SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 
+# Set working directory
 WORKDIR /usr/src
 
-# Install base system
-ARG BUILD_ARCH=amd64
+# Install base system and download Dashy
 ARG BASHIO_VERSION="v0.16.2"
 ARG S6_OVERLAY_VERSION="3.1.6.2"
 ARG TEMPIO_VERSION="2021.09.0"
 RUN set -o pipefail \
     && apk add --no-cache \
         yarn=1.22.22-r0 \
-        git=2.45.2-r0	 \
+        git=2.45.2-r0 \
         nodejs=20.13.1-r0 \
-        tzdata=2024a-r1	\
+        tzdata=2024a-r1 \
         python3=3.12.3-r1 \
         make=4.4.1-r2 \
         g++=13.2.1_git20240309-r0 \
-    &&  echo "Download Dashy" \
+    && echo "Downloading Dashy..." \
     && git clone https://github.com/Lissy93/dashy.git
 
+# Change to Dashy directory and install dependencies
 WORKDIR /usr/src/dashy
-# hadolint ignore=DL3060
 RUN yarn install --ignore-engines --immutable --no-cache --network-timeout 300000 --network-concurrency 1 \
-    && yarn build --mode production --no-clean 
+    && yarn build --mode production --no-clean
 
-# Expose the port
-EXPOSE ${PORT}
+# Expose the Dashy port (default is 8080)
+EXPOSE 8080
 
-# Labels
+# Add labels for Home Assistant
 LABEL \
   io.hass.name="${BUILD_NAME}" \
   io.hass.description="${BUILD_DESCRIPTION}" \
@@ -68,7 +69,7 @@ LABEL \
   maintainer="Brandon <brandon@teksyn.net>" \
   org.opencontainers.image.title="${BUILD_NAME}" \
   org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-  org.opencontainers.image.vendor="Home Assistant Community Add-ons" \
+  org.opencontainers.image.vendor="Home Assistant Add-ons Repository by Teksyn" \
   org.opencontainers.image.authors="Brandon <brandon@teksyn.net>" \
   org.opencontainers.image.licenses="MIT" \
   org.opencontainers.image.url="https://teksyn.net" \
@@ -77,3 +78,6 @@ LABEL \
   org.opencontainers.image.created=${BUILD_DATE} \
   org.opencontainers.image.revision=${BUILD_REF} \
   org.opencontainers.image.version=${BUILD_VERSION}
+
+# Start Dashy
+CMD ["yarn", "start"]
