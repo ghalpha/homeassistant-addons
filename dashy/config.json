@@ -12,7 +12,7 @@
     "amd64",
     "armv7"
   ],
-  "image": "ghcr.io/lissy93/dashy:latest",
+  "image": "ghcr.io/lissy93/dashy",
   "ports": {
     "8080/tcp": 8080
   },
