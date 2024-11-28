@@ -1,10 +1,10 @@
 {
-  "name": "Dashy",
+  "name": "diagrams.net⁠",
   "version": "latest",
-  "slug": "dashy",
-  "url": "https://dashy.to/",
+  "slug": "diagrams⁠",
+  "url": "https://diagrams.net⁠/",
   "init": false,
-  "description": "Dashy is an open source, highly customizable, easy to use, privacy-respecting dashboard app",
+  "description": "diagrams.net⁠ is a configurable diagramming/whiteboarding visualization application.",
   "webui": "http://[HOST]:[PORT:8080]",
   "stage": "stable",
   "arch": [
@@ -12,14 +12,11 @@
     "amd64",
     "armv7"
   ],
-  "image": "ghcr.io/lissy93/dashy",
+  "image": "jgraph/drawio",
   "ports": {
     "8080/tcp": 8080
   },
   "ports_description": {
     "8080/tcp": "Web interface"
-  },
-  "map": [
-    "share:rw"
-  ]
+  }
 }

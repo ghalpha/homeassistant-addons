@@ -8,3 +8,9 @@ addons:
     description: "Dashy is a customizable dashboard."
     url: "https://github.com/ghalpha/homeassistant-addons/tree/main/dashy"
     version: "latest"
+
+  - name: "Diagrams.net"
+    slug: "diagrams"
+    description: "diagrams.net⁠ is a configurable diagramming/whiteboarding visualization application."
+    url: "https://github.com/ghalpha/homeassistant-addons/tree/main/diagrams.net"
+    version: "latest"
