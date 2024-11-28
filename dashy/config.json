@@ -20,6 +20,6 @@
     "8080/tcp": "Web interface"
   },
   "map": [
-    "share:rw"
+    "addon_config:rw"
   ]
 }
