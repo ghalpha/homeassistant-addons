@@ -1,10 +1,10 @@
 {
-  "name": "diagrams⁠",
+  "name": "diagrams",
   "version": "latest",
-  "slug": "diagrams⁠",
-  "url": "https://diagrams.net⁠/",
+  "slug": "diagrams",
+  "url": "https://diagrams.net/",
   "init": false,
-  "description": "diagrams.net⁠ is a configurable diagramming/whiteboarding visualization application.",
+  "description": "diagrams.net is a configurable diagramming/whiteboarding visualization application.",
   "webui": "http://[HOST]:[PORT:8080]",
   "stage": "stable",
   "arch": [
