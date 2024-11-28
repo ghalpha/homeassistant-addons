@@ -1,0 +1,6 @@
+{
+    "name": "Home Assistant Add-ons Repository by Teksyn",
+    "udev": true,
+    "url": "https://github.com/ghalpha/homeassistant-addons",
+    "maintainer": "ghalpha"
+  }
