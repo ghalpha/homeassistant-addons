@@ -2,7 +2,7 @@
     "name": "13 Feet Ladder",
     "version": "latest",
     "slug": "13ft",
-    "url": "https://it-tools.tech",
+    "url": "https://github.com/wasi-master/13ft",
     "init": false,
     "description": "A site similar to 12ft.io but is self hosted and works with websites that 12ft.io doesn't work with.",
     "webui": "http://[HOST]:[PORT:5000]",
