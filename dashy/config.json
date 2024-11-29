@@ -19,7 +19,8 @@
   "ports_description": {
     "8080/tcp": "Web interface"
   },
-  "map": [
-    "addon_config:rw"
-  ]
+  "options": {
+    "/app/user-data/": "/user-data/"
+  },
+  "map": ["addon_config:rw"]
 }

@@ -1,0 +1,34 @@
+{
+  "name": "Dashboard",
+  "version": "1.0",
+  "slug": "dashboard",
+  "description": "A simple Homelab dashboard",
+  "url": "https://hub.docker.com/r/phntxx/dashboard/",
+  "arch": ["aarch64", "amd64", "armv7"],
+  "options": {
+    "PUID": "1000",
+    "PGID": "1000"
+  },
+  "schema": {
+    "PUID": "int",
+    "PGID": "int"
+  },
+  "image": "phntxx/dashboard:latest",
+  "ports": {
+    "3460/tcp": 8080
+  },
+  "ports_description": {
+    "3460/tcp": "web interface"
+  },
+  "webui": "http://[HOST]:[PORT:3460]",
+  "map": [
+    "config:rw",
+    "ssl"
+  ],
+  "devices": [
+    "/dev/dri",
+    "/dev/dri/card0",
+    "/dev/dri/card1"
+  ],
+  "udev": true
+}
