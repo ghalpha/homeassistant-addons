@@ -1,0 +1,23 @@
+{
+    "name": "13 Feet Ladder",
+    "version": "latest",
+    "slug": "13ft",
+    "url": "https://it-tools.tech",
+    "init": false,
+    "description": "A site similar to 12ft.io but is self hosted and works with websites that 12ft.io doesn't work with.",
+    "webui": "http://[HOST]:[PORT:5000]",
+    "stage": "stable",
+    "arch": [
+      "aarch64",
+      "amd64",
+      "armv7"
+    ],
+    "image": "wasimaster/13ft",
+    "ports": {
+      "5000/tcp": 5000
+    },
+    "ports_description": {
+      "5000/tcp": "Web interface"
+    }
+  }
+  
