@@ -14,10 +14,10 @@
     ],
     "image": "jgraph/drawio",
     "ports": {
-      "8000/tcp": 80
+      "80/tcp": 8000
     },
     "ports_description": {
-      "8000/tcp": "Web interface"
+      "80/tcp": "Web interface"
     }
   }
   
