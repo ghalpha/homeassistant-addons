@@ -12,7 +12,7 @@
       "amd64",
       "armv7"
     ],
-    "image": "jgraph/drawio",
+    "image": "corentinth/it-tools",
     "ports": {
       "80/tcp": 8000
     },
