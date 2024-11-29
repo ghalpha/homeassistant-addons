@@ -6,6 +6,7 @@
     "init": false,
     "description": "A site similar to 12ft.io but is self hosted and works with websites that 12ft.io doesn't work with.",
     "webui": "http://[HOST]:[PORT:5000]",
+    "panel": true,
     "stage": "stable",
     "arch": [
       "aarch64",
