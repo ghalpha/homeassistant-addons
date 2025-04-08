@@ -1,0 +1,23 @@
+{
+    "name": "Omni-Tools",
+    "version": "latest",
+    "slug": "omnitools",
+    "url": "https://github.com/iib0011/omni-tools",
+    "init": false,
+    "description": "OmniTools is a variety of online tools to simplify everyday tasks.",
+    "webui": "http://[HOST]:[PORT:8083]",
+    "stage": "stable",
+    "arch": [
+      "aarch64",
+      "amd64",
+      "armv7"
+    ],
+    "image": "iib0011/omni-tools",
+    "ports": {
+      "80/tcp": 8083
+    },
+    "ports_description": {
+      "80/tcp": "Web interface"
+    }
+  }
+  
