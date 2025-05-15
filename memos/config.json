@@ -1,0 +1,23 @@
+{
+    "name": "Memos",
+    "version": "latest",
+    "slug": "memos",
+    "url": "https://it-tools.tech",
+    "init": false,
+    "description": "A lightweight, self-hosted memo hub with knowledge management and socialization.",
+    "webui": "http://[HOST]:[PORT:5230]",
+    "stage": "stable",
+    "arch": [
+      "aarch64",
+      "amd64",
+      "armv7"
+    ],
+    "image": "neosmemo/memos",
+    "ports": {
+      "5230/tcp": 5230
+    },
+    "ports_description": {
+      "5230/tcp": "Web interface"
+    }
+  }
+  
