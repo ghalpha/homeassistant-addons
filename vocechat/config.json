@@ -1,0 +1,23 @@
+{
+    "name": "Vocechat Server",
+    "version": "latest",
+    "slug": "vocechat-server",
+    "url": "https://github.com/Privoce/vocechat-server-rust/",
+    "init": false,
+    "description": "VoceChat is the lightest chat server prioritizes private hosting! Easy integratation to your app with our open API!",
+    "webui": "http://[HOST]:[PORT:8083]",
+    "stage": "stable",
+    "arch": [
+      "aarch64",
+      "amd64",
+      "armv7"
+    ],
+    "image": "privoce/vocechat-server",
+    "ports": {
+      "3000/tcp": 3000
+    },
+    "ports_description": {
+      "3000/tcp": "Web interface"
+    }
+  }
+  

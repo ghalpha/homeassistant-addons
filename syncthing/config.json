@@ -1,0 +1,23 @@
+{
+    "name": "Syncthing",
+    "version": "latest",
+    "slug": "syncthing",
+    "url": "https://hub.docker.com/r/syncthing/syncthing",
+    "init": false,
+    "description": "Syncthing is a continuous file synchronization program. It synchronizes files between two or more computers in real time, safely protected from prying eyes. Your data is your data alone and you deserve to choose where it is stored, whether it is shared with some third party, and how it's transmitted over the internet.",
+    "webui": "http://[HOST]:[PORT:8384]",
+    "stage": "stable",
+    "arch": [
+      "aarch64",
+      "amd64",
+      "armv7"
+    ],
+    "image": "syncthing/syncthing",
+    "ports": {
+      "8384/tcp": 8384
+    },
+    "ports_description": {
+      "8384/tcp": "Web interface"
+    }
+  }
+  
