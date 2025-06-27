@@ -19,6 +19,6 @@
     "ports_description": {
       "7575/tcp": "Web interface"
     },
-    "map": ["share:rw"]
+    "map": ["addon_config:rw"]
   }
   

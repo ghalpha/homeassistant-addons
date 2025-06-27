@@ -1,0 +1,24 @@
+{
+    "name": "homepage",
+    "version": "latest",
+    "slug": "homepage_addon",
+    "url": "https://github.com/gethomepage/homepage",
+    "init": false,
+    "description": "homepage for Home Assistant",
+    "webui": "http://[HOST]:[PORT:3000]",
+    "stage": "stable",
+    "arch": [
+      "aarch64",
+      "amd64",
+      "armv7"
+    ],
+    "image": "ghcr.io/gethomepage/homepage",
+    "ports": {
+      "3000/tcp": 3000
+    },
+    "ports_description": {
+      "3000/tcp": "Web interface"
+    },
+    "map": ["addon_config:rw"]
+  }
+  

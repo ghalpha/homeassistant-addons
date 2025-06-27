@@ -2,7 +2,7 @@
     "name": "Memos",
     "version": "latest",
     "slug": "memos",
-    "url": "https://it-tools.tech",
+    "url": "https://usememos.com/",
     "init": false,
     "description": "A lightweight, self-hosted memo hub with knowledge management and socialization.",
     "webui": "http://[HOST]:[PORT:5230]",
