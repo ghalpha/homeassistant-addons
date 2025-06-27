@@ -13,8 +13,14 @@
       "armv7"
     ],
     "image": "ghcr.io/gethomepage/homepage",
+    "ingress": true,
+    "ingress_port": 0,
+    "ingress_stream": true,
     "ports": {
       "3000/tcp": 3000
+    },
+    "environment": {
+      "HOMEPAGE_ALLOWED_HOSTS ": ""
     },
     "ports_description": {
       "3000/tcp": "Web interface"
