@@ -1,5 +1,5 @@
 {
-  "name": "homepage",
+  "name": "Homepage",
   "version": "latest",
   "slug": "homepage_addon",
   "url": "https://github.com/gethomepage/homepage",
@@ -24,12 +24,12 @@
   },
   "map": ["addon_config:rw"],
   "environment": {
-    "HOMEPAGE_ALLOWED_HOSTS": "localhost"
+    "HOMEPAGE_ALLOWED_HOSTS": "*"
   },
   "schema": {
     "HOMEPAGE_ALLOWED_HOSTS": "str"
   },
   "options": {
-    "HOMEPAGE_ALLOWED_HOSTS": "localhost"
+    "HOMEPAGE_ALLOWED_HOSTS": "*"
   }
 }
