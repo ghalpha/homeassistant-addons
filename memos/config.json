@@ -18,6 +18,7 @@
     },
     "ports_description": {
       "5230/tcp": "Web interface"
-    }
+    },
+    "map": ["addon_config:rw"]
   }
   

@@ -1,0 +1,24 @@
+{
+    "name": "Homarr",
+    "version": "latest",
+    "slug": "homarr_addon",
+    "url": "https://homarr.dev/",
+    "init": false,
+    "description": "Homarr integration for Home Assistant",
+    "webui": "http://[HOST]:[PORT:7575]",
+    "stage": "stable",
+    "arch": [
+      "aarch64",
+      "amd64",
+      "armv7"
+    ],
+    "image": "ghcr.io/ajnart/homarr",
+    "ports": {
+      "7575/tcp": 7575
+    },
+    "ports_description": {
+      "7575/tcp": "Web interface"
+    },
+    "map": ["share:rw"]
+  }
+  
