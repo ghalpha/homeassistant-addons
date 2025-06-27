@@ -1,30 +1,35 @@
 {
-    "name": "homepage",
-    "version": "latest",
-    "slug": "homepage_addon",
-    "url": "https://github.com/gethomepage/homepage",
-    "init": false,
-    "description": "homepage for Home Assistant",
-    "webui": "http://[HOST]:[PORT:3000]",
-    "stage": "stable",
-    "arch": [
-      "aarch64",
-      "amd64",
-      "armv7"
-    ],
-    "image": "ghcr.io/gethomepage/homepage",
-    "ingress": true,
-    "ingress_port": 0,
-    "ingress_stream": true,
-    "ports": {
-      "3000/tcp": 3000
-    },
-    "schema": {
-      "HOMEPAGE_ALLOWED_HOSTS": "str?"
+  "name": "homepage",
+  "version": "latest",
+  "slug": "homepage_addon",
+  "url": "https://github.com/gethomepage/homepage",
+  "init": false,
+  "description": "homepage for Home Assistant",
+  "webui": "http://[HOST]:[PORT:3000]",
+  "stage": "stable",
+  "arch": [
+    "aarch64",
+    "amd64",
+    "armv7"
+  ],
+  "image": "ghcr.io/gethomepage/homepage",
+  "ingress": true,
+  "ingress_port": 0,
+  "ingress_stream": true,
+  "ports": {
+    "3000/tcp": 3000
   },
-    "ports_description": {
-      "3000/tcp": "Web interface"
-    },
-    "map": ["addon_config:rw"]
+  "ports_description": {
+    "3000/tcp": "Web interface"
+  },
+  "map": ["addon_config:rw"],
+  "environment": {
+    "HOMEPAGE_ALLOWED_HOSTS": "localhost"
+  },
+  "schema": {
+    "HOMEPAGE_ALLOWED_HOSTS": "str"
+  },
+  "options": {
+    "HOMEPAGE_ALLOWED_HOSTS": "localhost"
   }
-  
+}
