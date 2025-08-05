@@ -1,6 +1,6 @@
 {
   "name": "Homarr",
-  "version": "latest",
+  "version": "1.0.0",
   "slug": "homarr",
   "description": "A sleek, modern dashboard that puts all of your apps and services at your fingertips with extensive integrations",
   "url": "https://github.com/homarr-labs/homarr",
@@ -39,16 +39,13 @@
   "homeassistant_api": false,
   "stdin": false,
   "legacy": false,
-  "environment": {
-    "SECRET_ENCRYPTION_KEY": ""
-  },
   "options": {
     "secret_encryption_key": "",
     "port": 7575,
     "enable_docker_integration": true
   },
   "schema": {
-    "secret_encryption_key": "str?",
+    "secret_encryption_key": "str",
     "port": "port",
     "enable_docker_integration": "bool"
   },

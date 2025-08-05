@@ -17,12 +17,27 @@ secret_encryption_key=$(bashio::config 'secret_encryption_key')
 port=$(bashio::config 'port')
 enable_docker_integration=$(bashio::config 'enable_docker_integration')
 
-# Generate encryption key if not provided
-if bashio::config.is_empty 'secret_encryption_key'; then
+# Debug logging
+bashio::log.info "Configuration values:"
+bashio::log.info "Port: ${port}"
+bashio::log.info "Docker integration: ${enable_docker_integration}"
+bashio::log.info "Secret key length: ${#secret_encryption_key}"
+
+# Handle encryption key
+if bashio::config.has_value 'secret_encryption_key'; then
+    secret_encryption_key=$(bashio::config 'secret_encryption_key')
+    bashio::log.info "Using provided SECRET_ENCRYPTION_KEY from configuration"
+else
     bashio::log.info "Generating SECRET_ENCRYPTION_KEY..."
     secret_encryption_key=$(openssl rand -hex 32)
     bashio::log.info "Generated new encryption key. Save this in your addon configuration to persist across restarts:"
     bashio::log.info "${secret_encryption_key}"
+fi
+
+# Validate encryption key length (should be 64 characters for hex)
+if [ ${#secret_encryption_key} -ne 64 ]; then
+    bashio::log.warning "SECRET_ENCRYPTION_KEY should be exactly 64 characters (32 bytes in hex format)"
+    bashio::log.warning "Current length: ${#secret_encryption_key}"
 fi
 
 # Set environment variables
