@@ -1,12 +1,10 @@
 {
   "build_from": {
-    "aarch64": "ghcr.io/hassio-addons/base:stable",
-    "amd64": "ghcr.io/hassio-addons/base:stable",
-    "armhf": "ghcr.io/hassio-addons/base:stable",
-    "armv7": "ghcr.io/hassio-addons/base:stable",
-    "i386": "ghcr.io/hassio-addons/base:stable"
+    "aarch64": "ghcr.io/homarr-labs/homarr:latest",
+    "amd64": "ghcr.io/homarr-labs/homarr:latest",
+    "armhf": "ghcr.io/homarr-labs/homarr:latest",
+    "armv7": "ghcr.io/homarr-labs/homarr:latest",
+    "i386": "ghcr.io/homarr-labs/homarr:latest"
   },
-  "codenotary": {
-    "signer": "brandon@teksyn.net"
-  }
+  "args": {}
 }
