@@ -1,4 +1,7 @@
+
 FROM binwiederhier/ntfy:latest
 
-ENTRYPOINT ["/usr/bin/ntfy"]
-CMD ["serve"]
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
+
+CMD ["/run.sh"]
