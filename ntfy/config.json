@@ -31,15 +31,5 @@
     "enable_signup": "bool?",
     "enable_login": "bool?",
     "enable_reservations": "bool?"
-  },
-  "environment": {
-    "NTFY_BASE_URL": "",
-    "NTFY_CACHE_FILE": "/data/cache.db",
-    "NTFY_AUTH_FILE": "/data/auth.db",
-    "NTFY_ATTACHMENT_CACHE_DIR": "/data/attachments",
-    "NTFY_UPSTREAM_BASE_URL": "https://ntfy.sh",
-    "NTFY_ENABLE_SIGNUP": "true",
-    "NTFY_ENABLE_LOGIN": "true",
-    "NTFY_ENABLE_RESERVATIONS": "true"
   }
 }
