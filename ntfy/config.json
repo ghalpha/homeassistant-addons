@@ -15,13 +15,25 @@
   },
   "webui": "http://[HOST]:[PORT:8080]",
   "map": ["addon_config:rw"],
+  "options": {
+    "base_url": "",
+    "enable_signup": true,
+    "enable_login": true,
+    "enable_reservations": true
+  },
+  "schema": {
+    "base_url": "str?",
+    "enable_signup": "bool",
+    "enable_login": "bool",
+    "enable_reservations": "bool"
+  },
   "environment": {
+    "NTFY_BASE_URL": "{{ .base_url }}",
     "NTFY_CACHE_FILE": "/data/cache.db",
     "NTFY_AUTH_FILE": "/data/auth.db",
     "NTFY_ATTACHMENT_CACHE_DIR": "/data/attachments",
-    "NTFY_ENABLE_SIGNUP": "true",
-    "NTFY_ENABLE_LOGIN": "true",
-    "NTFY_ENABLE_RESERVATIONS": "true",
-    "NTFY_UPSTREAM_BASE_URL": "https://ntfy.sh"
+    "NTFY_ENABLE_SIGNUP": "{{ .enable_signup }}",
+    "NTFY_ENABLE_LOGIN": "{{ .enable_login }}",
+    "NTFY_ENABLE_RESERVATIONS": "{{ .enable_reservations }}"
   }
 }
