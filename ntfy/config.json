@@ -13,6 +13,7 @@
   },
   "webui": "http://[HOST]:[PORT:8080]",
   "map": ["addon_config:rw"],
+  "stdin": true,
   "options": {
     "base_url": "http://homeassistant.local:8080",
     "web_root": "app",
