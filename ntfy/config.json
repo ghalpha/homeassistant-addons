@@ -16,19 +16,35 @@
   "options": {
     "base_url": "http://homeassistant.local:8080",
     "web_root": "app",
+    "enable_signup": false,
+    "enable_login": true,
+    "enable_reservations": true,
+    "auth_default_access": "deny-all",
+    "behind_proxy": false,
     "cache_duration": "12h",
     "attachment_total_size_limit": "5G",
     "attachment_file_size_limit": "15M",
     "attachment_expiry_duration": "3h",
+    "visitor_request_limit_burst": 60,
+    "visitor_request_limit_replenish": "5s",
+    "visitor_message_daily_limit": 0,
     "log_level": "info"
   },
   "schema": {
     "base_url": "str",
     "web_root": "list(app|home|disable)",
+    "enable_signup": "bool",
+    "enable_login": "bool",
+    "enable_reservations": "bool",
+    "auth_default_access": "list(read-write|read-only|write-only|deny-all)",
+    "behind_proxy": "bool",
     "cache_duration": "str",
     "attachment_total_size_limit": "str",
     "attachment_file_size_limit": "str",
     "attachment_expiry_duration": "str",
+    "visitor_request_limit_burst": "int",
+    "visitor_request_limit_replenish": "str",
+    "visitor_message_daily_limit": "int",
     "log_level": "list(trace|debug|info|warn|error)"
   }
 }
