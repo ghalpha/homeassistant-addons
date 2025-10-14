@@ -16,7 +16,6 @@
   "environment": {
     "NTFY_WEB_ROOT": "app",
     "NTFY_CACHE_FILE": "/data/cache.db",
-    "NTFY_AUTH_FILE": "/data/user.db",
-    "NTFY_UPSTREAM_BASE_URL": "https://ntfy.sh"
+    "NTFY_AUTH_FILE": "/data/user.db"
   }
 }
