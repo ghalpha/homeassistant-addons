@@ -10,7 +10,7 @@
     "amd64",
     "armv7"
   ],
-  "image": "boky/postfix:latest",
+  "image": "boky/postfix",
   "startup": "services",
   "boot": "auto",
   "ports": {
