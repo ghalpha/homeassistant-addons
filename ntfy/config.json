@@ -6,7 +6,6 @@
   "url": "https://ntfy.sh/",
   "arch": ["aarch64", "amd64", "armv7"],
   "image": "binwiederhier/ntfy",
-  "cmd": ["serve"],
   "ports": {
     "80/tcp": 8080
   },
