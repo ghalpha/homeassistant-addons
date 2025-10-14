@@ -28,48 +28,45 @@ Ntfy (pronounced "notify") is a simple HTTP-based pub-sub notification service. 
 
 ## How to Use
 
-1. Start the add-on
-2. Check the add-on log output for the result
+### Quick Start
+
+1. Start the addon
+2. **Set up authentication** (highly recommended - see "Setting Up Authentication" below)
 3. Access Ntfy through the Web UI
-4. Install the Ntfy mobile app on your phone (optional)
-5. Subscribe to topics in the app or web interface
+4. Subscribe to topics in the app or web interface
+5. Send notifications from Home Assistant!
+
+### First-Time Setup
+
+**Step 1:** Configure the addon
+
+```json
+{
+  "enable_signup": true,
+  "enable_login": true,
+  "enable_reservations": true
+}
+```
+
+**Step 2:** Start the addon and open the Web UI
+
+**Step 3:** Create your admin account
+- Click Account → Sign up
+- Create your username and password
+- First user automatically becomes admin!
+
+**Step 4:** Secure your installation
+- Change config to `"enable_signup": false`
+- Restart addon
+- Create additional users via terminal if needed
+
+**Step 5:** Start using!
+- Subscribe to topics via web UI or mobile app
+- Send notifications from Home Assistant (see integration examples below)
 
 ### Sending Notifications from Home Assistant
 
-You can send notifications using the RESTful service:
-
-```yaml
-# configuration.yaml
-rest_command:
-  ntfy_notification:
-    url: http://localhost:8080/mytopic
-    method: POST
-    payload: '{"message": "{{ message }}", "title": "{{ title }}", "priority": {{ priority | default(3) }}}'
-    content_type: 'application/json'
-```
-
-Then use it in automations:
-
-```yaml
-automation:
-  - alias: "Send notification"
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.front_door
-        to: "on"
-    action:
-      - service: rest_command.ntfy_notification
-        data:
-          title: "Front Door"
-          message: "Front door opened"
-          priority: 4
-```
-
-Or use curl from the command line:
-
-```bash
-curl -d "Backup successful" http://localhost:8080/mytopic
-```
+See the "Integration with Home Assistant" section below for detailed examples with and without authentication.
 
 ## Configuration
 
@@ -79,46 +76,299 @@ The external URL of your ntfy server. Set this if you're accessing ntfy from out
 
 **Example:** `https://ntfy.yourdomain.com`
 
-### Option: `upstream_base_url` (optional)
-
-Forward poll requests to this upstream server. Default is `https://ntfy.sh`.
-
 ### Option: `enable_signup` (optional)
 
-Allow users to sign up via the web app. Default is `false`.
+Allow users to sign up via the web app. 
+
+- `true` - Anyone can create an account through the web interface
+- `false` - Only admins can create users via terminal
+
+**Default:** `true`  
+**Recommended:** Start with `true` to create your admin account, then set to `false`
 
 ### Option: `enable_login` (optional)
 
-Enable login/authentication. Default is `true`.
+Enable login/authentication. When enabled, users must authenticate to access topics.
+
+**Default:** `true`  
+**Recommended:** Always `true` for security
 
 ### Option: `enable_reservations` (optional)
 
-Allow users to reserve topics. Default is `false`.
+Allow users to reserve topic names so others can't use them.
 
-### Option: `behind_proxy` (optional)
+**Default:** `true`  
+**Recommended:** `true` for better organization
 
-Set to `true` if ntfy is behind a reverse proxy. Default is `false`.
+### Option: `cache_file` (optional)
 
-### Option: `visitor_request_limit_burst` (optional)
+Path to the cache database file.
 
-Number of requests a visitor can make in a burst. Default is 60.
+**Default:** `/data/cache.db`
 
-### Option: `visitor_request_limit_replenish` (optional)
+### Option: `auth_file` (optional)
 
-Rate at which request limits replenish. Default is "5s" (5 per second).
+Path to the authentication database file.
+
+**Default:** `/data/auth.db`
+
+### Option: `attachment_cache_dir` (optional)
+
+Directory to store file attachments.
+
+**Default:** `/data/attachments`
 
 ## Example Configuration
 
 ```json
 {
-  "base_url": "https://ntfy.yourdomain.com",
+  "base_url": "",
   "enable_signup": false,
   "enable_login": true,
   "enable_reservations": true,
-  "behind_proxy": true,
-  "visitor_request_limit_burst": 100
+  "cache_file": "/data/cache.db",
+  "auth_file": "/data/auth.db",
+  "attachment_cache_dir": "/data/attachments"
 }
 ```
+
+---
+
+## Setting Up Authentication
+
+Authentication is **highly recommended** to prevent unauthorized access to your notifications.
+
+### Method 1: Web UI Signup (Easiest) ✅
+
+This is the simplest method for creating your first admin account.
+
+#### Step 1: Enable Signup
+
+Set in addon configuration:
+```json
+{
+  "enable_signup": true,
+  "enable_login": true,
+  "enable_reservations": true
+}
+```
+
+#### Step 2: Restart the Addon
+
+#### Step 3: Create Admin Account
+
+1. Open the Ntfy web interface
+2. Click the **Account** icon (top right)
+3. Click **Sign up**
+4. Enter username and password
+5. Click **Sign up**
+
+**Important: The first user created automatically becomes an admin!**
+
+#### Step 4: Disable Public Signup (Recommended)
+
+After creating your admin account, disable public signup for security:
+
+```json
+{
+  "enable_signup": false,
+  "enable_login": true,
+  "enable_reservations": true
+}
+```
+
+This prevents random people from creating accounts on your server.
+
+---
+
+### Method 2: Using Addon Terminal (Most Control) 🔧
+
+For more control and to create multiple users, use the addon terminal.
+
+#### Step 1: Open Addon Terminal
+
+1. Go to **Settings** → **Add-ons** → **Ntfy**
+2. Click on the **Terminal** tab
+
+#### Step 2: Create Users
+
+**Create an admin user:**
+```bash
+ntfy user add --role=admin admin
+```
+
+**Create regular users:**
+```bash
+ntfy user add alice
+ntfy user add bob
+ntfy user add homeassistant
+```
+
+You'll be prompted to enter a password for each user.
+
+#### User Management Commands
+
+**List all users:**
+```bash
+ntfy user list
+```
+
+**Delete a user:**
+```bash
+ntfy user del username
+```
+
+**Change password:**
+```bash
+ntfy user change-pass username
+```
+
+**Change role:**
+```bash
+ntfy user change-role username admin
+```
+
+---
+
+### User Roles Explained
+
+#### Admin Role
+- Can manage all users
+- Can manage access to topics
+- Can view all topics
+- Can create/delete/modify users
+
+**Create admin:**
+```bash
+ntfy user add --role=admin adminuser
+```
+
+#### User Role (Default)
+- Can create and use topics
+- Can subscribe to topics
+- Cannot manage other users
+
+**Create regular user:**
+```bash
+ntfy user add regularuser
+```
+
+---
+
+### Topic Access Control
+
+Control who can access which topics for better security.
+
+#### Grant Access
+
+**Allow a user to publish to a topic:**
+```bash
+ntfy access username topicname write
+```
+
+**Allow a user to subscribe to a topic:**
+```bash
+ntfy access username topicname read
+```
+
+**Allow full access (read & write):**
+```bash
+ntfy access username topicname rw
+```
+
+#### Examples
+
+```bash
+# Allow user "john" to publish alerts
+ntfy access john alerts write
+
+# Allow user "jane" to read notifications
+ntfy access jane notifications read
+
+# Allow admin full access to system topics
+ntfy access admin system rw
+```
+
+#### View Permissions
+
+```bash
+ntfy access
+```
+
+#### Revoke Access
+
+```bash
+ntfy access --reset username topicname
+```
+
+---
+
+### Recommended Setup Flow
+
+Here's the best way to set up Ntfy authentication:
+
+**1. Enable signup initially:**
+```json
+{
+  "enable_signup": true,
+  "enable_login": true,
+  "enable_reservations": true
+}
+```
+
+**2. Create your admin account** (via web UI - first user is auto-admin)
+
+**3. Disable public signup:**
+```json
+{
+  "enable_signup": false,
+  "enable_login": true,
+  "enable_reservations": true
+}
+```
+
+**4. Create additional users via terminal:**
+```bash
+ntfy user add alice
+ntfy user add bob
+ntfy user add homeassistant
+```
+
+**5. Set up topic permissions (optional but recommended):**
+```bash
+# Let everyone read public topics
+ntfy access alice public read
+ntfy access bob public read
+
+# Only admin can publish to important topics
+ntfy access admin alerts write
+ntfy access admin system write
+```
+
+---
+
+### Testing Authentication
+
+After setting up users, verify authentication is working:
+
+**Try publishing without credentials (should fail):**
+```bash
+curl -d "Test message" http://your-ha-ip:8080/test
+```
+Expected: `401 Unauthorized`
+
+**Try publishing with credentials (should work):**
+```bash
+curl -u username:password -d "Test message" http://your-ha-ip:8080/test
+```
+Expected: `200 OK`
+
+**Test in web interface:**
+1. Open Ntfy web UI
+2. Try subscribing to a topic
+3. Should prompt for login
+4. Enter credentials
+5. Should work!
 
 ## Topics and Subscriptions
 
@@ -166,8 +416,23 @@ notify:
     message_param_name: message
 ```
 
-### Method 2: Using REST Command (more flexible)
+**With authentication:**
+```yaml
+notify:
+  - name: ntfy
+    platform: rest
+    resource: http://localhost:8080/homeassistant
+    method: POST_JSON
+    title_param_name: title
+    message_param_name: message
+    authentication: basic
+    username: your-username
+    password: your-password
+```
 
+### Method 2: Using REST Command (More Flexible)
+
+**Without authentication:**
 ```yaml
 rest_command:
   ntfy:
@@ -181,6 +446,82 @@ rest_command:
         "tags": {{ tags | default([]) | tojson }}
       }
     content_type: 'application/json'
+```
+
+**With authentication (recommended):**
+```yaml
+rest_command:
+  ntfy:
+    url: http://localhost:8080/{{ topic }}
+    method: POST
+    username: homeassistant
+    password: your-password
+    payload: >
+      {
+        "message": "{{ message }}",
+        "title": "{{ title }}",
+        "priority": {{ priority | default(3) }},
+        "tags": {{ tags | default([]) | tojson }}
+      }
+    content_type: 'application/json'
+```
+
+### Method 3: Shell Command
+
+**With authentication:**
+```yaml
+shell_command:
+  ntfy_send: 'curl -u homeassistant:your-password -d "{{ message }}" http://localhost:8080/{{ topic }}'
+```
+
+### Usage in Automations
+
+**Using notify platform:**
+```yaml
+automation:
+  - alias: "Front Door Alert"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.front_door
+        to: "on"
+    action:
+      - service: notify.ntfy
+        data:
+          title: "Front Door"
+          message: "Front door opened at {{ now().strftime('%H:%M') }}"
+```
+
+**Using rest_command:**
+```yaml
+automation:
+  - alias: "Motion Detected"
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.motion
+        to: "on"
+    action:
+      - service: rest_command.ntfy
+        data:
+          topic: "alerts"
+          title: "Motion Alert"
+          message: "Motion detected in living room"
+          priority: 4
+          tags: ["rotating_light"]
+```
+
+**Using shell_command:**
+```yaml
+automation:
+  - alias: "Temperature Alert"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.temperature
+        above: 30
+    action:
+      - service: shell_command.ntfy_send
+        data:
+          topic: "alerts"
+          message: "Temperature is {{ states('sensor.temperature') }}°C"
 ```
 
 ## Support
