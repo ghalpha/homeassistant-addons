@@ -23,10 +23,12 @@
   "environment": {
     "HOMEPAGE_ALLOWED_HOSTS": "*"
   },
-  "schema": {
-    "HOMEPAGE_ALLOWED_HOSTS": "str"
-  },
   "options": {
-    "HOMEPAGE_ALLOWED_HOSTS": "*"
+    "HOMEPAGE_ALLOWED_HOSTS": "*",
+    "LOG_LEVEL": "info"
+  },
+  "schema": {
+    "HOMEPAGE_ALLOWED_HOSTS": "str",
+    "LOG_LEVEL": ["trace", "debug", "info", "warn", "error"]
   }
 }
