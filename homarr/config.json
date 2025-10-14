@@ -7,52 +7,33 @@
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "application",
   "boot": "auto",
-  "init": false,
-  "image": "ghcr.io/homarr-labs/homarr",
+  "image": "ghcr.io/homarr-labs/homarr:latest",
   "ports": {
     "7575/tcp": 7575
   },
   "ports_description": {
-    "7575/tcp": "Web interface port"
+    "7575/tcp": "Web interface"
   },
   "webui": "http://[HOST]:[PORT:7575]",
   "ingress": true,
-  "ingress_port": 0,
   "panel_icon": "mdi:view-dashboard",
   "panel_title": "Homarr",
   "hassio_api": true,
-  "privileged": ["NET_ADMIN"],
-  "full_access": false,
-  "host_network": false,
-  "host_pid": false,
-  "host_ipc": false,
-  "host_dbus": false,
-  "devices": [],
-  "udev": false,
   "docker_api": true,
-  "video": false,
-  "audio": false,
-  "gpio": false,
-  "usb": false,
-  "uart": false,
-  "kernel_modules": false,
-  "homeassistant_api": false,
-  "stdin": false,
-  "legacy": false,
+  "privileged": ["NET_ADMIN"],
+  "map": ["addon_config:rw"],
   "options": {
-    "secret_encryption_key": "",
-    "port": 7575,
-    "enable_docker_integration": true,
-    "log_level": "info"
+    "PORT": 7575,
+    "AUTH_SECRET_KEY": ""
   },
   "schema": {
-    "secret_encryption_key": "str?",
-    "port": "port",
-    "enable_docker_integration": "bool",
-    "log_level": ["trace", "debug", "info", "warn", "error"]
+    "PORT": "port",
+    "AUTH_SECRET_KEY": "str?"
   },
-  "map": [
-    "addon_config:rw",
-    "ssl"
-  ]
+  "environment": {
+    "PORT": "7575",
+    "AUTH_SECRET_KEY": "",
+    "DATABASE_URL": "file:///data/db.sqlite",
+    "NEXTAUTH_URL": "http://localhost:7575"
+  }
 }
