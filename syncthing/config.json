@@ -1,23 +1,52 @@
 {
-    "name": "Syncthing",
-    "version": "latest",
-    "slug": "syncthing",
-    "url": "https://hub.docker.com/r/syncthing/syncthing",
-    "init": false,
-    "description": "Syncthing is a continuous file synchronization program. It synchronizes files between two or more computers in real time, safely protected from prying eyes. Your data is your data alone and you deserve to choose where it is stored, whether it is shared with some third party, and how it's transmitted over the internet.",
-    "webui": "http://[HOST]:[PORT:8384]",
-    "stage": "stable",
-    "arch": [
-      "aarch64",
-      "amd64",
-      "armv7"
-    ],
-    "image": "syncthing/syncthing",
-    "ports": {
-      "8384/tcp": 8384
-    },
-    "ports_description": {
-      "8384/tcp": "Web interface"
-    }
+  "name": "Syncthing",
+  "version": "latest",
+  "slug": "syncthing",
+  "url": "https://syncthing.net/",
+  "init": false,
+  "description": "Syncthing is a continuous file synchronization program. It synchronizes files between two or more computers in real time, safely protected from prying eyes.",
+  "webui": "http://[HOST]:[PORT:8384]",
+  "stage": "stable",
+  "arch": [
+    "aarch64",
+    "amd64",
+    "armv7"
+  ],
+  "image": "syncthing/syncthing",
+  "ports": {
+    "8384/tcp": 8384,
+    "22000/tcp": 22000,
+    "22000/udp": 22000,
+    "21027/udp": 21027
+  },
+  "ports_description": {
+    "8384/tcp": "Web interface",
+    "22000/tcp": "Sync protocol (TCP)",
+    "22000/udp": "Sync protocol (UDP)",
+    "21027/udp": "Discovery broadcasts"
+  },
+  "map": [
+    "addon_config:rw",
+    "share:rw",
+    "backup:rw",
+    "media:rw"
+  ],
+  "options": {
+    "gui_user": "",
+    "gui_password": "",
+    "device_name": "Home Assistant",
+    "enable_relaying": true,
+    "enable_nat_traversal": true
+  },
+  "schema": {
+    "gui_user": "str?",
+    "gui_password": "password?",
+    "device_name": "str?",
+    "enable_relaying": "bool?",
+    "enable_nat_traversal": "bool?"
+  },
+  "environment": {
+    "PUID": "0",
+    "PGID": "0"
   }
-  
+}
