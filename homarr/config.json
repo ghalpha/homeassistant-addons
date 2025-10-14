@@ -7,7 +7,7 @@
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "application",
   "boot": "auto",
-  "image": "ghcr.io/homarr-labs/homarr:latest",
+  "image": "ghcr.io/homarr-labs/homarr",
   "ports": {
     "7575/tcp": 7575
   },
