@@ -30,18 +30,5 @@
     "attachment_file_size_limit": "str",
     "attachment_expiry_duration": "str",
     "log_level": "list(trace|debug|info|warn|error)"
-  },
-  "environment": {
-    "NTFY_BASE_URL": "{{ .base_url }}",
-    "NTFY_WEB_ROOT": "{{ .web_root }}",
-    "NTFY_UPSTREAM_BASE_URL": "https://ntfy.sh",
-    "NTFY_CACHE_FILE": "/data/cache.db",
-    "NTFY_CACHE_DURATION": "{{ .cache_duration }}",
-    "NTFY_AUTH_FILE": "/data/user.db",
-    "NTFY_ATTACHMENT_CACHE_DIR": "/data/attachments",
-    "NTFY_ATTACHMENT_TOTAL_SIZE_LIMIT": "{{ .attachment_total_size_limit }}",
-    "NTFY_ATTACHMENT_FILE_SIZE_LIMIT": "{{ .attachment_file_size_limit }}",
-    "NTFY_ATTACHMENT_EXPIRY_DURATION": "{{ .attachment_expiry_duration }}",
-    "NTFY_LOG_LEVEL": "{{ .log_level }}"
   }
 }
