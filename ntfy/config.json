@@ -24,12 +24,12 @@
   },
   "schema": {
     "base_url": "str",
-    "web_root": "list(app|home|disable)?",
-    "cache_duration": "str?",
-    "attachment_total_size_limit": "str?",
-    "attachment_file_size_limit": "str?",
-    "attachment_expiry_duration": "str?",
-    "log_level": "list(trace|debug|info|warn|error)?"
+    "web_root": "list(app|home|disable)",
+    "cache_duration": "str",
+    "attachment_total_size_limit": "str",
+    "attachment_file_size_limit": "str",
+    "attachment_expiry_duration": "str",
+    "log_level": "list(trace|debug|info|warn|error)"
   },
   "environment": {
     "NTFY_BASE_URL": "{{ .base_url }}",
