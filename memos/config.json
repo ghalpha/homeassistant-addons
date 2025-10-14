@@ -20,5 +20,12 @@
       "5230/tcp": "Web interface"
     },
     "map": ["addon_config:rw"]
-  }
-  
+    "options": {
+      "mode": "prod",
+      "port": 5230
+    },
+    "schema": {
+      "mode": ["prod", "dev"],
+      "port": "port"
+    }
+  } 
