@@ -1,0 +1,55 @@
+{
+  "name": "Ntfy",
+  "version": "latest",
+  "slug": "ntfy",
+  "description": "Send push notifications to your phone or desktop via PUT/POST",
+  "url": "https://ntfy.sh/",
+  "init": false,
+  "arch": [
+    "aarch64",
+    "amd64",
+    "armv7"
+  ],
+  "image": "binwiederhier/ntfy",
+  "ports": {
+    "80/tcp": 8080
+  },
+  "ports_description": {
+    "80/tcp": "Web interface and API"
+  },
+  "webui": "http://[HOST]:[PORT:8080]",
+  "map": [
+    "addon_config:rw"
+  ],
+  "options": {
+    "base_url": "",
+    "upstream_base_url": "https://ntfy.sh",
+    "cache_file": "/data/cache.db",
+    "auth_file": "/data/auth.db",
+    "attachment_cache_dir": "/data/attachments",
+    "enable_signup": false,
+    "enable_login": true,
+    "enable_reservations": false
+  },
+  "schema": {
+    "base_url": "str?",
+    "upstream_base_url": "str?",
+    "cache_file": "str?",
+    "auth_file": "str?",
+    "attachment_cache_dir": "str?",
+    "enable_signup": "bool?",
+    "enable_login": "bool?",
+    "enable_reservations": "bool?",
+    "behind_proxy": "bool?",
+    "attachment_total_size_limit": "str?",
+    "visitor_request_limit_burst": "int?",
+    "visitor_request_limit_replenish": "str?"
+  },
+  "environment": {
+    "NTFY_BASE_URL": "",
+    "NTFY_UPSTREAM_BASE_URL": "https://ntfy.sh",
+    "NTFY_CACHE_FILE": "/data/cache.db",
+    "NTFY_AUTH_FILE": "/data/auth.db",
+    "NTFY_ATTACHMENT_CACHE_DIR": "/data/attachments"
+  }
+}
