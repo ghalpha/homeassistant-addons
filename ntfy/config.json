@@ -14,8 +14,11 @@
   "webui": "http://[HOST]:[PORT:8080]",
   "map": ["addon_config:rw"],
   "environment": {
+    "NTFY_BASE_URL": "http://homeassistant.local:8080",
     "NTFY_WEB_ROOT": "app",
     "NTFY_CACHE_FILE": "/data/cache.db",
-    "NTFY_AUTH_FILE": "/data/user.db"
+    "NTFY_AUTH_FILE": "/data/user.db",
+    "NTFY_ATTACHMENT_CACHE_DIR": "/data/attachments",
+    "NTFY_UPSTREAM_BASE_URL": "https://ntfy.sh"
   }
 }
