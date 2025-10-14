@@ -1,4 +1,3 @@
-
 FROM binwiederhier/ntfy:latest
 
 COPY run.sh /run.sh
