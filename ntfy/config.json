@@ -6,6 +6,7 @@
   "url": "https://ntfy.sh/",
   "arch": ["aarch64", "amd64", "armv7"],
   "image": "binwiederhier/ntfy",
+  "cmd": ["serve"],
   "ports": {
     "80/tcp": 8080
   },
@@ -14,22 +15,13 @@
   },
   "webui": "http://[HOST]:[PORT:8080]",
   "map": ["addon_config:rw"],
-  "options": {
-    "base_url": "",
-    "cache_file": "/data/cache.db",
-    "auth_file": "/data/auth.db",
-    "attachment_cache_dir": "/data/attachments",
-    "enable_signup": true,
-    "enable_login": true,
-    "enable_reservations": true
-  },
-  "schema": {
-    "base_url": "str?",
-    "cache_file": "str?",
-    "auth_file": "str?",
-    "attachment_cache_dir": "str?",
-    "enable_signup": "bool?",
-    "enable_login": "bool?",
-    "enable_reservations": "bool?"
+  "environment": {
+    "NTFY_CACHE_FILE": "/data/cache.db",
+    "NTFY_AUTH_FILE": "/data/auth.db",
+    "NTFY_ATTACHMENT_CACHE_DIR": "/data/attachments",
+    "NTFY_ENABLE_SIGNUP": "true",
+    "NTFY_ENABLE_LOGIN": "true",
+    "NTFY_ENABLE_RESERVATIONS": "true",
+    "NTFY_UPSTREAM_BASE_URL": "https://ntfy.sh"
   }
 }
