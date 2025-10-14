@@ -20,7 +20,58 @@
     "8080/tcp": "Web interface"
   },
   "options": {
-    "/app/user-data/": "/user-data/"
+    "page_title": "Dashy",
+    "description": "My Home Dashboard",
+    "theme": "default",
+    "language": "en",
+    "layout": "auto",
+    "icon_size": "medium",
+    "hide_settings": false,
+    "hide_footer": false,
+    "enable_multi_tasking": true,
+    "custom_css": ""
+  },
+  "schema": {
+    "page_title": "str?",
+    "description": "str?",
+    "theme": [
+      "default",
+      "colorful",
+      "nord",
+      "nord-frost",
+      "material",
+      "material-dark",
+      "dracula",
+      "high-contrast-light",
+      "high-contrast-dark",
+      "one-dark",
+      "glass"
+    ],
+    "language": [
+      "en",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "nl",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "layout": [
+      "auto",
+      "horizontal",
+      "vertical"
+    ],
+    "icon_size": [
+      "small",
+      "medium",
+      "large"
+    ],
+    "hide_settings": "bool?",
+    "hide_footer": "bool?",
+    "enable_multi_tasking": "bool?",
+    "custom_css": "str?"
   },
   "map": ["addon_config:rw"]
 }
