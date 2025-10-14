@@ -5,6 +5,8 @@
   "description": "Send push notifications to your phone or desktop via PUT/POST",
   "url": "https://ntfy.sh/",
   "arch": ["aarch64", "amd64", "armv7"],
+  "stdin": true,
+  "tty": true,
   "ports": {
     "80/tcp": 8080
   },
@@ -13,7 +15,6 @@
   },
   "webui": "http://[HOST]:[PORT:8080]",
   "map": ["addon_config:rw"],
-  "stdin": true,
   "options": {
     "base_url": "http://homeassistant.local:8080",
     "web_root": "app",
