@@ -13,12 +13,35 @@
   },
   "webui": "http://[HOST]:[PORT:8080]",
   "map": ["addon_config:rw"],
+  "options": {
+    "base_url": "http://homeassistant.local:8080",
+    "web_root": "app",
+    "cache_duration": "12h",
+    "attachment_total_size_limit": "5G",
+    "attachment_file_size_limit": "15M",
+    "attachment_expiry_duration": "3h",
+    "log_level": "info"
+  },
+  "schema": {
+    "base_url": "str",
+    "web_root": "list(app|home|disable)?",
+    "cache_duration": "str?",
+    "attachment_total_size_limit": "str?",
+    "attachment_file_size_limit": "str?",
+    "attachment_expiry_duration": "str?",
+    "log_level": "list(trace|debug|info|warn|error)?"
+  },
   "environment": {
-    "NTFY_BASE_URL": "http://homeassistant.local:8080",
-    "NTFY_WEB_ROOT": "app",
+    "NTFY_BASE_URL": "{{ .base_url }}",
+    "NTFY_WEB_ROOT": "{{ .web_root }}",
+    "NTFY_UPSTREAM_BASE_URL": "https://ntfy.sh",
     "NTFY_CACHE_FILE": "/data/cache.db",
+    "NTFY_CACHE_DURATION": "{{ .cache_duration }}",
     "NTFY_AUTH_FILE": "/data/user.db",
     "NTFY_ATTACHMENT_CACHE_DIR": "/data/attachments",
-    "NTFY_UPSTREAM_BASE_URL": "https://ntfy.sh"
+    "NTFY_ATTACHMENT_TOTAL_SIZE_LIMIT": "{{ .attachment_total_size_limit }}",
+    "NTFY_ATTACHMENT_FILE_SIZE_LIMIT": "{{ .attachment_file_size_limit }}",
+    "NTFY_ATTACHMENT_EXPIRY_DURATION": "{{ .attachment_expiry_duration }}",
+    "NTFY_LOG_LEVEL": "{{ .log_level }}"
   }
 }
