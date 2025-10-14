@@ -42,15 +42,17 @@
   "options": {
     "secret_encryption_key": "",
     "port": 7575,
-    "enable_docker_integration": true
+    "enable_docker_integration": true,
+    "log_level": "info"
   },
   "schema": {
-    "secret_encryption_key": "str",
+    "secret_encryption_key": "str?",
     "port": "port",
-    "enable_docker_integration": "bool"
+    "enable_docker_integration": "bool",
+    "log_level": ["trace", "debug", "info", "warn", "error"]
   },
   "map": [
-    "config:rw",
+    "addon_config:rw",
     "ssl"
   ]
 }
