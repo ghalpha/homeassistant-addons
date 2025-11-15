@@ -1,0 +1,30 @@
+{
+  "name": "Networking Toolbox",
+  "version": "1.0.0",
+  "slug": "networking_toolbox",
+  "description": "Offline-first networking toolbox for sysadmins (by Lissy93).",
+  "url": "https://github.com/Lissy93/networking-toolbox",
+  "stage": "stable",
+  "startup": "application",
+  "boot": "auto",
+  "arch": ["amd64", "aarch64", "armhf", "i386"],
+  "ports": {
+    "3000/tcp": 3000
+  },
+  "ports_description": {
+    "3000/tcp": "Networking Toolbox web interface"
+  },
+  "webui": "http://[HOST]:[PORT:3000]/",
+  "map": [
+    "addon_config:rw"
+  ],
+  "environment": {
+    "NODE_ENV": "production",
+    "PORT": "3000",
+    "HOST": "0.0.0.0"
+  },
+  "legacy": true,
+  "options": {},
+  "schema": {},
+  "image": "lissy93/networking-toolbox"
+}
