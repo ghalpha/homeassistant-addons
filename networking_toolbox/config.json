@@ -1,6 +1,6 @@
 {
   "name": "Networking Toolbox",
-  "version": "1.0.0",
+  "version": "latest",
   "slug": "networking_toolbox",
   "description": "Offline-first networking toolbox for sysadmins (by Lissy93).",
   "url": "https://github.com/Lissy93/networking-toolbox",
